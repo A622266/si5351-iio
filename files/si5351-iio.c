@@ -730,11 +730,13 @@ static int si5351_i2c_probe(struct i2c_client *i2c,	const struct i2c_device_id *
 		return 0;
 }
 
-static void si5351_i2c_remove(struct i2c_client *i2c)
+static int si5351_i2c_remove(struct i2c_client *i2c)
 {
 		struct iio_dev *indio_dev = dev_get_drvdata(&i2c->dev);
 
 		iio_device_unregister(indio_dev);
+		
+		return 0;
 }
 
 static const struct i2c_device_id si5351_i2c_ids[] = {
